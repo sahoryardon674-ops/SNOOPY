@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 💕</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #89CFF0, #ffc0cb);
+    font-family: 'Comic Sans MS', cursive;
+    overflow:hidden;
+}
+
+/* Brillito fondo */
+body::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10%);
+    background-size: 50px 50px;
+    animation: sparkle 10s linear infinite;
+}
+
+@keyframes sparkle{
+    from{transform: translate(0,0);}
+    to{transform: translate(-50px,-50px);}
+}
+
+.container{
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+/* Snoopy */
+.dog{
+    width:220px;
+    animation: floatDog 3s ease-in-out infinite;
+}
+
+@keyframes floatDog{
+    0%,100%{ transform: translateY(0) scale(1);}
+    50%{ transform: translateY(-15px) scale(1.05);}
+}
+
+/* Besos */
+.kiss{
+    position:absolute;
+    font-size:30px;
+    animation: kissMove 2s infinite;
+}
+
+.kiss:nth-child(2){ left:50px; animation-delay:0.5s;}
+.kiss:nth-child(3){ left:-50px; animation-delay:1s;}
+
+@keyframes kissMove{
+    0%{ transform: translate(0,0); opacity:0;}
+    30%{ opacity:1;}
+    100%{ transform: translate(120px,-100px); opacity:0;}
+}
+
+/* Texto */
+h1{
+    color:white;
+    font-size:42px;
+    margin-top:20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{opacity:0.7;}
+    to{opacity:1;}
+}
+
+/* Subtexto */
+p{
+    color:white;
+    font-size:18px;
+    margin-top:10px;
+    animation: fade 3s infinite alternate;
+}
+
+@keyframes fade{
+    from{opacity:0.5;}
+    to{opacity:1;}
+}
+
+/* Corazones */
+.hearts{
+    position:absolute;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform: translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform: translateY(-400px) scale(1.5);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Snoopy -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" class="dog">
+
+    <!-- Besitos -->
+    <div class="kiss">💋</div>
+    <div class="kiss">💋</div>
+    <div class="kiss">💋</div>
+
+    <!-- Texto -->
+    <h1>Para ti 💗 </h1>
+    <p> Hoy me caes un poquito mejor de lo normal JAJAJA</p>
+
+</div>
+
+<script>
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("hearts");
+
+    const hearts = ["💖","💗","💘","💕"];
+    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left = Math.random()*window.innerWidth + "px";
+    heart.style.top = "100%";
+    heart.style.fontSize = (Math.random()*20 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },4000);
+}
+
+setInterval(createHeart, 200);
+</script>
+
+</body>
+</html>
