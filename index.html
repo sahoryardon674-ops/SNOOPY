@@ -1,155 +1,383 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti 💕</title>
+<title>Para mi Amorcito ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(135deg, #89CFF0, #ffc0cb);
-    font-family: 'Comic Sans MS', cursive;
-    overflow:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Brillito fondo */
-body::before{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10%);
-    background-size: 50px 50px;
-    animation: sparkle 10s linear infinite;
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe0eb, #fff2f6, #f9cddd);
+  color: #805264;
+  overflow-x: hidden;
 }
 
-@keyframes sparkle{
-    from{transform: translate(0,0);}
-    to{transform: translate(-50px,-50px);}
+.pantalla {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 16px;
+  position: relative;
 }
 
-.container{
-    text-align:center;
-    position:relative;
-    z-index:2;
+.inicio {
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+  z-index: 2;
+  animation: aparecer 1.4s ease;
 }
 
-/* Snoopy */
-.dog{
-    width:220px;
-    animation: floatDog 3s ease-in-out infinite;
+.etiqueta {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b96c88;
+  margin-bottom: 18px;
 }
 
-@keyframes floatDog{
-    0%,100%{ transform: translateY(0) scale(1);}
-    50%{ transform: translateY(-15px) scale(1.05);}
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(43px, 9vw, 75px);
+  color: #c34f79;
+  margin-bottom: 15px;
 }
 
-/* Besos */
-.kiss{
-    position:absolute;
-    font-size:30px;
-    animation: kissMove 2s infinite;
+.subtitulo {
+  font-size: 13px;
+  line-height: 2;
+  color: #966779;
+  max-width: 390px;
+  margin: 0 auto 25px;
 }
 
-.kiss:nth-child(2){ left:50px; animation-delay:0.5s;}
-.kiss:nth-child(3){ left:-50px; animation-delay:1s;}
-
-@keyframes kissMove{
-    0%{ transform: translate(0,0); opacity:0;}
-    30%{ opacity:1;}
-    100%{ transform: translate(120px,-100px); opacity:0;}
+.sobre {
+  font-size: 100px;
+  margin: 10px 0 28px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 15px #d16a9250);
+  animation: flotar 3s ease-in-out infinite;
 }
 
-/* Texto */
-h1{
-    color:white;
-    font-size:42px;
-    margin-top:20px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    animation: glow 2s infinite alternate;
+button {
+  border: none;
+  border-radius: 40px;
+  padding: 16px 26px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .3s;
 }
 
-@keyframes glow{
-    from{opacity:0.7;}
-    to{opacity:1;}
+.botonAbrir {
+  background: linear-gradient(135deg, #df7196, #b9366b);
+  color: white;
+  box-shadow: 0 8px 25px #bd547044;
 }
 
-/* Subtexto */
-p{
-    color:white;
-    font-size:18px;
-    margin-top:10px;
-    animation: fade 3s infinite alternate;
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px #bd547055;
 }
 
-@keyframes fade{
-    from{opacity:0.5;}
-    to{opacity:1;}
+.nota {
+  font-size: 11px;
+  color: #b47b8e;
+  margin-top: 22px;
 }
 
-/* Corazones */
-.hearts{
-    position:absolute;
-    animation: float 4s linear infinite;
+#zonaCarta {
+  display: none;
+  width: 100%;
+  max-width: 780px;
+  margin: auto;
+  z-index: 2;
+  animation: abrirCarta 1.2s ease;
 }
 
-@keyframes float{
-    0%{
-        transform: translateY(0) scale(1);
-        opacity:1;
-    }
-    100%{
-        transform: translateY(-400px) scale(1.5);
-        opacity:0;
-    }
+.papel {
+  position: relative;
+  background: #fffdf9;
+  padding: clamp(25px, 6vw, 58px);
+  border-radius: 12px;
+  border: 1px solid #f5d6e1;
+  box-shadow: 0 20px 70px #a64d6a25;
+}
+
+.decoracion {
+  text-align: center;
+  color: #e5a0b8;
+  font-size: 22px;
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+}
+
+.fecha {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #c18197;
+  margin-bottom: 18px;
+}
+
+.tituloCarta {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(39px, 7vw, 58px);
+  color: #c34f79;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.introCarta {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #d0809c;
+  font-size: 23px;
+  margin-bottom: 30px;
+}
+
+#textoCarta {
+  font-size: 13px;
+  line-height: 2.05;
+  color: #775565;
+  overflow-wrap: anywhere;
+}
+
+#textoCarta p {
+  margin-bottom: 19px;
+  text-indent: 15px;
+}
+
+#textoCarta .especial {
+  color: #bb4771;
+  font-weight: 500;
+  text-indent: 0;
+}
+
+.firma {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(27px, 5vw, 38px);
+  color: #c34f79;
+  text-align: center;
+  margin-top: 32px;
+  line-height: 1.6;
+}
+
+.corazonFinal {
+  text-align: center;
+  font-size: 27px;
+  margin-top: 14px;
+  animation: latido 1.3s infinite;
+}
+
+.botonVolver {
+  display: block;
+  margin: 22px auto 0;
+  background: #fffafc;
+  color: #bc547a;
+  border: 1px solid #e9bdce;
+  font-size: 12px;
+}
+
+.particula {
+  position: fixed;
+  bottom: -50px;
+  pointer-events: none;
+  z-index: 1;
+  animation: subir linear forwards;
+  opacity: 0;
+}
+
+.oculto {
+  display: none !important;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes abrirCarta {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-13px) rotate(4deg); }
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .papel { padding: 30px 22px; }
+  #textoCarta { font-size: 12px; line-height: 2; }
+  .sobre { font-size: 82px; }
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="container">
+<main class="pantalla">
 
-    <!-- Snoopy -->
-    <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" class="dog">
+  <section class="inicio" id="inicio">
+    <p class="etiqueta">Un detalle hecho especialmente para ti</p>
 
-    <!-- Besitos -->
-    <div class="kiss">💋</div>
-    <div class="kiss">💋</div>
-    <div class="kiss">💋</div>
+    <h1>Mi amorcito ❤️</h1>
 
-    <!-- Texto -->
-    <h1>Para ti 💗 </h1>
-    <p> Hoy me caes un poquito mejor de lo normal JAJAJA</p>
+    <p class="subtitulo">
+      Hay algo que llevo en mi corazón y que quiero
+      compartir contigo. Espero que te guste. 💗
+    </p>
 
-</div>
+    <div class="sobre">💌</div>
+
+    <br>
+
+    <button class="botonAbrir" onclick="abrirCarta()">
+      Tengo un regalo para ti 💗
+    </button>
+
+    <p class="nota">Abre tu regalito ♡</p>
+  </section>
+
+  <section id="zonaCarta">
+    <article class="papel">
+
+      <div class="decoracion">♡ ✧ ♡ ✧ ♡</div>
+
+      <p class="fecha">UNA CARTITA HECHA CON AMOR</p>
+
+      <h2 class="tituloCarta">Para mi amorcito...</h2>
+
+      <p class="introCarta">
+        Algo que quiero que sepas, mi amor ❤️
+      </p>
+
+      <div id="textoCarta">
+
+        <p>Mi amorcito lindo 💗</p>
+
+        <p>No sé ni cómo empezar esta cartita, pero quiero que sepas lo mucho que te amo y lo especial que eres para mí, a veces siento que ni con mil palabras podría explicarte todo lo que siento por ti, porque de verdad te has convertido en alguien demasiado importante para mí y no te imaginas lo feliz que me hace tenerte en mi vida.</p>
+
+        <p>Ya casi son 6 meses hablando contigo y de verdad que bonito ha sido conocerte poquito a poquito, hablar contigo, agarrarte cariño y darme cuenta de lo mucho que puedes llegar a significar para mí, si te soy sincera, nunca imaginé que iba a llegar a querer tanto a alguien como te quiero a ti.❤️</p>
+
+        <p>No sabes lo bonito que se siente tener a alguien como tú en mi vida, alguien que me hace sentir tantas cosas lindas y que sin darse cuenta puede hacerme feliz con un mensajito, con una palabra bonita o simplemente con el hecho de hablar conmigo, tal vez para ti algunas cosas sean pequeñas, pero para mí significan muchísimo, porque cuando alguien me importa de verdad, hasta los detalles más pequeñitos se vuelven especiales.</p>
+
+        <p>Y es que no sé qué tienes tú, pero te juro que tienes algo que me hace quererte cada día más, me gusta hablar contigo, saber de ti, molestarte, contarte mis cosas y compartir mis días contigo, me gusta que seas tú y no otra persona, porque de verdad no quisiera que fueras alguien más, yo te quiero a ti, con tu forma de ser, con tus cosas bonitas y hasta con esas cositas tuyas que a veces me molestan pero yo se que exagero y me enojo por nada jajaja.</p>
+
+        <p>Quiero que sepas que lo que siento por ti es de verdad, que no eres cualquier niño para mí y que tienes un lugar demasiado bonito en mi corazón, yo te amo con todo mi corazón, y aunque a veces no sepa cómo demostrarte todo lo que siento o no encuentre las palabras correctas para decírtelo, créeme que te llevo presente más de lo que imaginas, hay veces que me quedo pensando en ti y me dan unas ganas enormes de tenerte conmigo, de abrazarte bien fuerte y no soltarte. </p>
+
+        <p>No te voy a decir que soy perfecta porque no lo soy, también tengo mis defectos y mis momentos, pero si hay algo que sí quiero que tengas claro es que mi cariño por ti es sincero, me importas muchísimo, me preocupa cómo estás, cómo te sientes y cómo te va en tus cosas, quiero verte feliz, quiero que cumplas todo lo que te propongas y quiero que siempre tengas presente que hay una niña que te quiere un montón y que se siente muy feliz de tenerte en su vida. </p>
+
+        <p>De verdad espero que sigamos hablando, que sigamos conociéndonos y que podamos vivir muchísimas cosas bonitas juntos, me hace ilusión pensar en todos los momentos que todavía nos faltan por compartir y en todas las veces que voy a poder verte y pasar tiempo contigo, no sabes cuánto deseo poder darte muchos abrazos, llenarte de besitos y demostrarte en persona todo ese amor que te tengo. </p>
+
+        <p>Gracias por estos casi 6 meses, por cada conversación, por cada ratito que compartes conmigo y por hacerte alguien tan especial para mí, no sé si te das cuenta de lo mucho que te amo, pero espero que nunca dudes de lo importante que eres para mí, porque si algo tengo claro es que no quiero que seas solamente alguien que pasó por mi vida, quiero que seas alguien con quien pueda seguir compartiendo muchísimas cosas bonitas.</p>
+
+        <p>Mi amorcito, yo de verdad te amo muchísimo, más de lo que a veces puedo explicar, y si pudiera pedir algo, sería que esto tan bonito que estamos formando siga creciendo, que nunca nos falte la confianza, las ganas de hablar, el cariño y las ganas de seguir eligiéndonos, quiero que cuando pienses en mí sepas que tienes a alguien que te quiere de corazón y que se pone feliz con tan solo saber de ti. </p>
+
+        <p>Y bueno, ya no sé qué más decirte porque siento que podría escribirte mil cosas y aun así me faltarían palabras para explicarte todo lo que siento jajajaja, solo quiero que nunca olvides que eres mi niño bonito, que te has ganado un pedacito enorme de mi corazón.</p>
+
+        <p class="especial">Te amo demasiado, gracias por llegar a mi vida y por hacerme sentir todo esto tan bonito, espero que algún día pueda darte un abrazo enorme y decirte mirándote a los ojitos todo lo que hoy te escribo por aquí, cuando no me de pena amor jajaja, eres demasiado especial para mí y no tienes idea de lo mucho que te quiero. 💗</p>
+
+      </div>
+
+      <div class="firma">
+        Con todo mi amor,<br>
+        para ti, mi niño bonito. 💌❤️
+      </div>
+
+      <div class="corazonFinal">💗 🥹 💗</div>
+
+      <p style="text-align:center; margin-top:24px; font-size:11px; color:#c18197;">
+        Hecha con muchísimo amor, especialmente para ti ♡
+      </p>
+
+    </article>
+
+    <button class="botonVolver" onclick="volverInicio()">
+      Volver a la sorpresa ♡
+    </button>
+  </section>
+
+</main>
 
 <script>
-function createHeart(){
-    const heart = document.createElement("div");
-    heart.classList.add("hearts");
+function abrirCarta() {
+  document.getElementById('inicio').classList.add('oculto');
 
-    const hearts = ["💖","💗","💘","💕"];
-    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+  const zona = document.getElementById('zonaCarta');
+  zona.style.display = 'block';
 
-    heart.style.left = Math.random()*window.innerWidth + "px";
-    heart.style.top = "100%";
-    heart.style.fontSize = (Math.random()*20 + 15) + "px";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },4000);
+  crearCorazones(35);
 }
 
-setInterval(createHeart, 200);
+function volverInicio() {
+  document.getElementById('zonaCarta').style.display = 'none';
+  document.getElementById('inicio').classList.remove('oculto');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function crearCorazones(cantidad) {
+  const simbolos = ['💗', '💕', '♡', '💖', '✨', '🌸'];
+
+  for (let i = 0; i < cantidad; i++) {
+    const elemento = document.createElement('span');
+
+    elemento.className = 'particula';
+    elemento.textContent =
+      simbolos[Math.floor(Math.random() * simbolos.length)];
+
+    elemento.style.left = Math.random() * 100 + 'vw';
+    elemento.style.fontSize = (14 + Math.random() * 17) + 'px';
+    elemento.style.animationDuration = (4 + Math.random() * 5) + 's';
+    elemento.style.animationDelay = Math.random() * 2 + 's';
+
+    document.body.appendChild(elemento);
+
+    setTimeout(() => elemento.remove(), 11000);
+  }
+}
+
+setInterval(() => crearCorazones(2), 1800);
 </script>
 
 </body>
